@@ -14,3 +14,73 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.toolbar-title{
+  @include rtl() {
+        text-align:right;
+        direction:rtl;
+    }
+}
+
+.rtl {
+	direction: rtl;
+}
+
+.hidden {
+	display: none;
+}
+
+$line-height-base: 1.8 !default;
+$link-color: #333;
+
+.item-body  {
+	@include rtl() {
+          text-align:right;
+          direction:rtl;
+      }
+	margin: 8px 8px 16px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+	background-color: #ffffff;
+	border-top:2px solid #999999;
+	padding:12px;
+}
+
+.item-body p{
+  font-size:17px;
+  direction:rtl;
+  margin-bottom:0;
+}
+
+.item-body .meta{
+  font-size:13px;
+  direction:rtl;
+  color:#999999;
+  text-align:left;
+  margin-top:12px;
+}
+.item-body .share{
+  float: left;
+  padding: 0 0 3px 3px;
+  font-size: 1.7em;
+  color: #ccc;
+}
+.toastMessage{
+  text-align:center;
+	margin:0 auto;
+}
+.postTextArea {
+max-width: 100%;
+width: 100%;
+height: 20vh;
+}
+
+.bubble-background{
+  background-color: #eeeeee;
+/*  background-image: url("../img/timeline_bg.png");*/
+}
+
+
+.toolbar-title  {
+  text-align:center;
+  font-weight:bold;
+}

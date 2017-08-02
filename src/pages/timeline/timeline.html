@@ -1,0 +1,35 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-buttons start no-shadow>
+			<button ion-button (click)="openNewJokeModal()" secondary large>
+				<ion-icon ios="ios-add" md="ios-add"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>تايم لاين النكت</ion-title>
+
+	</ion-navbar>
+</ion-header>
+
+<!-- Pull to Refresh -->
+<ion-content class="bubble-background">
+	<ion-refresher (ionRefresh)="getNewer($event)">
+		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="اسحب للتحديث" refreshingText="جاري التحديث">
+		</ion-refresher-content>
+	</ion-refresher>
+
+	<!-- The Jokes List -->
+	<ion-list>
+		<div *ngFor="let joke of jokesService.jokes">
+			<div (click)="showAction(joke);" class="item item-body" [ngStyle]="{'border-color': joke.borderColor}">
+				<!-- <div (click)='shareItem(joke);' class="share"><ion-icon name="share-alt"></ion-icon	</div> -->
+				<p style="white-space: pre-wrap; margin-top:0px;color:#333333;">{{joke.content}}</p>
+				<!--<div class="meta"><span>أضافها {{joke.username}} </span> <span>منذ <time>{{joke.date_modified | amTimeAgo:true}}</time></span></div>-->
+			</div>
+		</div>
+	</ion-list>
+
+	<!-- Scroll to infinity -->
+	<ion-infinite-scroll (ionInfinite)="$event.waitFor(getOlder())">
+		<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>
