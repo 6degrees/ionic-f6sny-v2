@@ -2,16 +2,18 @@
 هذا المستودع لأكواد تطبيق فطسني. البرمجة تمت عبر إستخدام فريمورك [آيونك](https://www.ionicframework.com). العمل يعتبر تطبيق لما نتعلمه في عالم البرمجة.  
 
 ### To-Do
-* (x)Add Pull to refresh
-* (x)Add New Post Functionality
-* Add About Page link in homepage
+* (x) Add Pull to refresh
+* (x) Add New Post Functionality
+* (x) Add About Page link in homepage
+* (x) Fix checkboxes of new joke (it was a malfunction of genymotion)
 * Add Favorites and hearts function
-* Add Multi-forward
+* Add Multi-forward (multiple select of jokes to forward or share)
 * Grab device ID for anonymous user generation of tokens
-* in-app registration in this case is just an update to user information
+* In-app registration: in this case it is just an update to user information
 * Add commenting feature
 * Add Geo location, for jokes around me.
-* Add top tabs for favorite jokes, unseen jokes, jokes timeline, jokes around me.
+* Add Firebase Crash Reporting
+* Add top tabs (segments) for favorite jokes, unseen jokes, jokes timeline, jokes around me.
 * Add Support for push Notification (create firebase tokens).
 	* You can send users random jokes once everyday.
 	* Send users that their jokes were approved.
@@ -60,3 +62,6 @@
 * Ionic Stuff and Tutorials
 	* Styling your application [Joshmorony](https://www.joshmorony.com/a-guide-to-styling-an-ionic-2-application/)
 	* Good HTTP practice: [Building a review App](https://www.joshmorony.com/building-a-review-app-with-ionic-2-mongodb-node/)
+* UI
+	* [Pintrest](https://www.pinterest.com/wepsdesign/ui-mobile-booking-travel/?lp=true)
+	* [Pintrest](https://www.pinterest.com/pin/271201208786791612/)

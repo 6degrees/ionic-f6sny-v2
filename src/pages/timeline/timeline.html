@@ -1,22 +1,23 @@
 <ion-header>
-	<ion-navbar color="primary">
-		<ion-buttons start no-shadow>
-			<button ion-button (click)="openNewJokeModal()" secondary large>
-				<ion-icon ios="ios-add" md="ios-add"></ion-icon>
+	<ion-navbar>
+
+		<ion-buttons right>
+			<button ion-button icon-only (click)="openAboutModal()">
+				<ion-icon name="help"></ion-icon>
 			</button>
 		</ion-buttons>
 		<ion-title>تايم لاين النكت</ion-title>
-
-		<ion-buttons end no-shadow>
-			<button ion-button (click)="openAboutModal()" secondary large>
-				<ion-icon ios="ios-help" md="ios-help"></ion-icon>
+		<ion-buttons left>
+			<button ion-button icon-only (click)="openNewJokeModal()">
+				<ion-icon name="create"></ion-icon>
 			</button>
 		</ion-buttons>
+
 
 	</ion-navbar>
 </ion-header>
 
-<ion-content class="bubble-background">
+<ion-content>
 	<!-- Pull to Refresh -->
 	<ion-refresher (ionRefresh)="getNewer($event)">
 		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="اسحب للتحديث" refreshingText="جاري التحديث">

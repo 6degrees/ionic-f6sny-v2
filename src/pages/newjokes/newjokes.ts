@@ -11,14 +11,20 @@ export class NewjokesPage {
 	Tags: any = [];
 	Joke: any = "";
 	formData: any;
+	selectOptions: any;
 
 	constructor(public navCtrl: NavController,
 		public navParams: NavParams,
 		public jokesService: ApiProvider,
 		private toastCtrl: ToastController,
 		public modalCtrl: ModalController,
-		public viewCtrl: ViewController,
-	) {	}
+		public viewCtrl: ViewController,){
+			this.selectOptions = {
+				title: 'تصنيفات النكت',
+				subTitle: 'إختر تصنيف واحد على الأقل',
+			};
+			this.Tags.push(13);
+	}
 
 	close(){
        this.viewCtrl.dismiss();
@@ -45,6 +51,7 @@ export class NewjokesPage {
 	}
 
 	submitJoke(){
+		let self = this;
 		let postContent:any;
 
 		// Check the joke
@@ -75,10 +82,9 @@ export class NewjokesPage {
 
 		postContent = {'joke': "يقول لك، " + this.Joke, 'tags': this.Tags};
 		// if all pass, submit the joke.
-		this.jokesService.postJoke(postContent);
-
-		this.close();
-
+		self.jokesService.postJoke(postContent).then(() => {
+			this.close();
+		});
 
 	}
 }

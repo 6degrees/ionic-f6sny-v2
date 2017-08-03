@@ -1,69 +1,44 @@
-.toolbar-title{
-  @include rtl() {
-        text-align:right;
-        direction:rtl;
-    }
+.toolbar .toolbar-title {
+	text-shadow: 1px 1px 2px rgba(127, 127, 127, 1);
 }
 
-.rtl {
-	direction: rtl;
+.toolbar .icon{
+	text-shadow: 1px 1px 2px rgba(127, 127, 127, 1);
 }
 
-.hidden {
-	display: none;
-}
-
-$line-height-base: 1.8 !default;
-$link-color: #333;
-
-.item-body  {
-	@include rtl() {
-          text-align:right;
-          direction:rtl;
-      }
-	margin: 8px 8px 16px;
+.item-body {
+	margin: 8px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12);
 	background-color: #ffffff;
-	border-top:2px solid #999999;
-	padding:12px;
+	border-top: 4px solid #999999;
+	border-radius: 8px;
+	padding: 12px;
 }
 
-.item-body p{
-  font-size:17px;
-  direction:rtl;
-  margin-bottom:0;
+.item-body p {
+	margin-bottom: 0;
 }
 
-.item-body .meta{
-  font-size:13px;
-  direction:rtl;
-  color:#999999;
-  text-align:left;
-  margin-top:12px;
+.item-body .meta {
+	font-size: 13px;
+	color: #999999;
+	text-align: left;
+	margin-top: 12px;
 }
-.item-body .share{
-  float: left;
-  padding: 0 0 3px 3px;
-  font-size: 1.7em;
-  color: #ccc;
+
+.item-body .share {
+	float: left;
+	padding: 0 0 3px 3px;
+	font-size: 1.7em;
+	color: #ccc;
 }
-.toastMessage{
-  text-align:center;
-	margin:0 auto;
+
+.toastMessage {
+	text-align: center;
+	margin: 0 auto;
 }
+
 .postTextArea {
-max-width: 100%;
-width: 100%;
-height: 20vh;
-}
-
-.bubble-background{
-  background-color: #eeeeee;
-/*  background-image: url("../img/timeline_bg.png");*/
-}
-
-
-.toolbar-title  {
-  text-align:center;
-  font-weight:bold;
+	max-width: 100%;
+	width: 100%;
 }

@@ -1,37 +1,48 @@
 <ion-header>
-	<ion-navbar color="primary">
-		<ion-buttons right no-shadow>
-			<button ion-button (click)="openInformationModal()" secondary large>
-				 <ion-icon ios="ios-help" md="ios-help"></ion-icon>
+	<ion-navbar>
+		<ion-buttons right>
+			<button ion-button icon-only (click)="openInformationModal()">
+				 <ion-icon name="help"></ion-icon>
 			</button>
 		</ion-buttons>
 		<ion-title>عندك نكتة؟</ion-title>
-		<ion-buttons left no-shadow>
-			<button ion-button (click)="close()" secondary large>
+		<ion-buttons left>
+			<button ion-button icon-only (click)="close()">
 				<ion-icon name="close"></ion-icon>
 			</button>
 		</ion-buttons>
 	</ion-navbar>
 </ion-header>
 
-<ion-content>
-	<ion-list no-lines text-wrap>
-		<ion-list-header no-padding no-margin>إكتب النكتة هنا:</ion-list-header>
-		<ion-item>
-			<ion-textarea no-margin placeholder="يقول لك، " [(ngModel)]="Joke" rows="4" class="postTextArea"></ion-textarea>
-		</ion-item>
-		<ion-list-header>إختر مع النكتة عالأقل تصنيف واحد:</ion-list-header>
-		<ion-item-sliding>
-			<ion-item *ngFor="let tag of jokesService.tags">
-				<ion-label>{{tag.title}}</ion-label>
-				<ion-checkbox [(ng-model)]="formData[tag.id]" (ionChange)="ToggleTags(tag.id)"></ion-checkbox>
-			</ion-item>
-		 </ion-item-sliding>
-	</ion-list>
+<ion-content no-padding>
+	<ion-grid>
+		<ion-row>
+			<ion-col><ion-textarea no-margin placeholder="طق هنا واكتب نكتتك" [(ngModel)]="Joke" rows="6" class="postTextArea"></ion-textarea></ion-col>
+		</ion-row>
 
+	</ion-grid>
 </ion-content>
 <ion-footer>
-	<ion-toolbar>
-		<button color="success" ion-button full large (click)='submitJoke();'>إرسال</button>
-	</ion-toolbar>
+	<ion-grid no-padding no-margin>
+		<ion-row>
+			<ion-col>
+				<h3>تصنيفات</h3><small>إختر واحد على الأقل</small>
+			</ion-col>
+
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-select text-nowrap [selectOptions]="selectOptions" okText="تمام" cancelText="إلغاء" [(ngModel)]="Tags" multiple="true">
+					<ion-option class="nowrap" *ngFor="let tag of jokesService.tags" [value]="tag.id">{{tag.title}}</ion-option>
+				</ion-select>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				<button no-margin ion-button full large (click)='submitJoke();'>إرسال</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
 </ion-footer>

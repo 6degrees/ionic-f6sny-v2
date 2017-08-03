@@ -112,7 +112,7 @@ export class ApiProvider {
 			(res) => console.log(res),
 			(err) => console.warn(err),
 			() => {
-				this.hideLoader()
+				this.hideLoader();
 			}
    		);
 	  }
