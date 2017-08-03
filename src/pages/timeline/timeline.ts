@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { ToastController,ModalController } from 'ionic-angular';
+import { ToastController, ModalController } from 'ionic-angular';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 import { NewjokesPage } from '../newjokes/newjokes';
 
@@ -31,6 +31,7 @@ constructor(public navCtrl: NavController,
 		let helpModal = this.modalCtrl.create(NewjokesPage);
          helpModal.present();
 	}
+
 	// First load of the application
 	getInitial(): Promise<any> {
 		let self = this;
@@ -132,8 +133,9 @@ constructor(public navCtrl: NavController,
 		});
 	}
 
+	// Used for random laugh addition in action sheet
 	randomIntFromInterval(min,max){
-    return Math.floor(Math.random()*(max-min+1)+min);
-}
+    	return Math.floor(Math.random()*(max-min+1)+min);
+	}
 
 }

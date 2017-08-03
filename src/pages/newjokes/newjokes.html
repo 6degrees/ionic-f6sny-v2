@@ -24,7 +24,7 @@
 		<ion-item-sliding>
 			<ion-item *ngFor="let tag of jokesService.tags">
 				<ion-label>{{tag.title}}</ion-label>
-				<ion-checkbox  (ionChange)="ToggleTags(tag.id)"></ion-checkbox>
+				<ion-checkbox [(ng-model)]="formData[tag.id]" (ionChange)="ToggleTags(tag.id)"></ion-checkbox>
 			</ion-item>
 		 </ion-item-sliding>
 	</ion-list>

@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
-
-/**
- * Generated class for the NewJokeHelpPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-new-joke-help',
@@ -14,15 +7,15 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 })
 export class NewJokeHelpPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-  }
+	constructor(public viewCtrl: ViewController) {
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewJokeHelpPage');
-  }
+	ionViewDidLoad(){
+		console.log('ionViewDidLoad NewJokeHelpPage');
+	}
 
-  close() {
-     this.viewCtrl.dismiss();
-   }
+	close(){
+ 		this.viewCtrl.dismiss();
+	}
 
 }

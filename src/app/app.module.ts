@@ -3,7 +3,6 @@ import { ModeratePage } from '../pages/moderate/moderate';
 import { NewjokesPage } from '../pages/newjokes/newjokes';
 import { TimelinePage } from '../pages/timeline/timeline';
 import { NewJokeHelpPage } from '../pages/new-joke-help/new-joke-help';
-import { TabsPage } from '../pages/tabs/tabs';
 import { ApiProvider } from '../providers/api/api';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import {Deploy, CloudSettings, CloudModule} from '@ionic/cloud-angular';

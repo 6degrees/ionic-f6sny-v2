@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, ModalController, ViewController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
-import {NewJokeHelpPage} from '../new-joke-help/new-joke-help';
+import { NewJokeHelpPage } from '../new-joke-help/new-joke-help';
 
 @Component({
   selector: 'page-newjokes',
@@ -10,6 +10,7 @@ import {NewJokeHelpPage} from '../new-joke-help/new-joke-help';
 export class NewjokesPage {
 	Tags: any = [];
 	Joke: any = "";
+	formData: any;
 
 	constructor(public navCtrl: NavController,
 		public navParams: NavParams,
@@ -19,26 +20,28 @@ export class NewjokesPage {
 		public viewCtrl: ViewController,
 	) {	}
 
-	close() {
+	close(){
        this.viewCtrl.dismiss();
-     }
-	ionViewDidLoad() {
+    }
+
+	ionViewDidLoad(){
 		this.jokesService.getTags();
 	}
+
 	openInformationModal(){
 		let helpModal = this.modalCtrl.create(NewJokeHelpPage);
          helpModal.present();
 	}
 
 	ToggleTags(id){
-		if (this.Tags.includes(id))
-		{
+		if (this.Tags.includes(id)){
 			this.Tags.pop(id);
 		}
 		else{
 			this.Tags.push(id);
 		}
 		console.log("Tags array now includes: " + this.Tags);
+		console.log(this.formData);
 	}
 
 	submitJoke(){

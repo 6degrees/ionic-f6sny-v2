@@ -10,8 +10,8 @@
 	</ion-navbar>
 </ion-header>
 
-<!-- Pull to Refresh -->
 <ion-content class="bubble-background">
+	<!-- Pull to Refresh -->
 	<ion-refresher (ionRefresh)="getNewer($event)">
 		<ion-refresher-content pullingIcon="arrow-dropdown" pullingText="اسحب للتحديث" refreshingText="جاري التحديث">
 		</ion-refresher-content>

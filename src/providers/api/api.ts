@@ -3,7 +3,6 @@ import { Http, URLSearchParams, Headers } from '@angular/http';
 import { ToastController, LoadingController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 
-
 @Injectable()
 export class ApiProvider {
 	jokes: any = [];
