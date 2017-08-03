@@ -20,7 +20,7 @@
 	* Create a function to get token from user_id
 	* Create a function to get device token from token
 	* Create a function to get token from device token
-* Update the API to be a RESTful API as per standards (bookmark exists)
+* Update the API to be a RESTful API as per standards (bookmark exists) also, use this for controller [codeigniter-restserver](https://github.com/chriskacerguis/codeigniter-restserver)
 * Add the moderation page
 * Implement Caching
 
