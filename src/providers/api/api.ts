@@ -18,6 +18,7 @@ export class ApiProvider {
 	loader = this.loadingCtrl.create({
 	  content: "يرجى الإنتظار..",
 	});
+
 	constructor(public http: Http,
 		private toastCtrl: ToastController,
 		public loadingCtrl: LoadingController,
@@ -89,18 +90,16 @@ export class ApiProvider {
 		self.getTotalJokesCount();
 	}
 
-	presentLoading() {
-
-  	}
-
 	private showLoader(): void {
 	    this.loader.present();
 		console.log('Show loader');
     }
+
 	private hideLoader(): void {
 		this.loader.dismiss();
         console.log('Hide loader');
     }
+
 	async postJoke(joke){
 		let self = this;
 	    let headers = new Headers();
@@ -117,7 +116,6 @@ export class ApiProvider {
 			}
    		);
 	  }
-//	postJoke() { }
 
 	moderateJoke() { }
 

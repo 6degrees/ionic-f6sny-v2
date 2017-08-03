@@ -24,6 +24,9 @@
 * Update the API to be a RESTful API as per standards (bookmark exists) also, use this for controller [codeigniter-restserver](https://github.com/chriskacerguis/codeigniter-restserver)
 * Add the moderation page
 * Implement Caching
+* Revise the loading spinner utilizing this [How To Fetch json Dat......](http://www.icoderslab.com/how-to-fetch-json-data-from-web-service-in-ionic-2-app-using-angular-2/)
+* Consider adding timeout for http requests [ionic forum](https://forum.ionicframework.com/t/ionic-http-request-timeout/38912/21)
+
 
 ### Logic
 * On Installation first load
@@ -50,5 +53,10 @@
 # Contributions
 للمشاركة, يرجى سحب هذا المستودع ودفع التعديلات وسيتم مراجعتها وجزيل الشكر لكل من يساهم معنا ويساعدنا في ها العمل
 
-# References
-* Full Stack Developer: [https://medium.com/coderbyte/a-guide-to-becoming-a-full-stack-developer-in-2017-5c3c08a1600c](https://medium.com/coderbyte/a-guide-to-becoming-a-full-stack-developer-in-2017-5c3c08a1600c)
+# References & Good Reads
+* Full Stack Development
+	* a guide to becoming a full stack developer in 2017 [medium.com/coderbyte/](https://medium.com/coderbyte/a-guide-to-becoming-a-full-stack-developer-in-2017-5c3c08a1600c)
+	* Recent technologies [Aligator.io](https://alligator.io/ionic/)
+* Ionic Stuff and Tutorials
+	* Styling your application [Joshmorony](https://www.joshmorony.com/a-guide-to-styling-an-ionic-2-application/)
+	* Good HTTP practice: [Building a review App](https://www.joshmorony.com/building-a-review-app-with-ionic-2-mongodb-node/)

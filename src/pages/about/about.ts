@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 import {Deploy} from '@ionic/cloud-angular';
 
 @Component({
@@ -8,8 +8,11 @@ import {Deploy} from '@ionic/cloud-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController,public deploy: Deploy) {
+  constructor(public viewCtrl: ViewController,public deploy: Deploy) {
 
   }
 
+  close(){
+  	this.viewCtrl.dismiss();
+  }
 }

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { ToastController, ModalController } from 'ionic-angular';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 import { NewjokesPage } from '../newjokes/newjokes';
+import { AboutPage } from '../about/about';
 
 @Component({
   selector: 'page-timeline',
@@ -29,6 +29,11 @@ constructor(public navCtrl: NavController,
 
 	openNewJokeModal(){
 		let helpModal = this.modalCtrl.create(NewjokesPage);
+         helpModal.present();
+	}
+
+	openAboutModal(){
+		let helpModal = this.modalCtrl.create(AboutPage);
          helpModal.present();
 	}
 
