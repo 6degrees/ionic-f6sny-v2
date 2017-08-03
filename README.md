@@ -1,6 +1,7 @@
 # F6sny App Stuff
+هذا المستودع لأكواد تطبيق فطسني. البرمجة تمت عبر إستخدام فريمورك [آيونك](https://www.ionicframework.com). العمل يعتبر تطبيق لما نتعلمه في عالم البرمجة.  
 
-## To-Do
+### To-Do
 * (x)Add Pull to refresh
 * (x)Add New Post Functionality
 * Add About Page link in homepage
@@ -15,7 +16,7 @@
 	* You can send users random jokes once everyday.
 	* Send users that their jokes were approved.
 * Implement seen functionality
-* Implement **JWT** (create client tokens)
+* Implement **JWT** (create client tokens) [PHP Authorization with JWT](https://www.sitepoint.com/php-authorization-jwt-json-web-tokens/)
 	* Create a function to get user_id from token
 	* Create a function to get token from user_id
 	* Create a function to get device token from token
@@ -24,7 +25,7 @@
 * Add the moderation page
 * Implement Caching
 
-## Logic
+### Logic
 * On Installation first load
 	* Is registered? (User token saved in storage?)
 		* No
@@ -42,3 +43,12 @@
 						* Proceed
 					* No
 						* Register Anonymously
+
+
+
+
+# Contributions
+للمشاركة, يرجى سحب هذا المستودع ودفع التعديلات وسيتم مراجعتها وجزيل الشكر لكل من يساهم معنا ويساعدنا في ها العمل
+
+# References
+* Full Stack Developer: [https://medium.com/coderbyte/a-guide-to-becoming-a-full-stack-developer-in-2017-5c3c08a1600c](https://medium.com/coderbyte/a-guide-to-becoming-a-full-stack-developer-in-2017-5c3c08a1600c)
