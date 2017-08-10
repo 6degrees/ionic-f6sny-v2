@@ -1,40 +1,37 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
+import { ToastController, ModalController, AlertController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet';
 import { NewjokesPage } from '../newjokes/newjokes';
 import { AboutPage } from '../about/about';
 
 @Component({
-  selector: 'page-timeline',
-  templateUrl: 'timeline.html',
+	selector: 'page-timeline',
+	templateUrl: 'timeline.html',
 })
 export class TimelinePage {
-
-constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public jokesService: ApiProvider,
-    private clipboard: Clipboard,
-    private socialSharing: SocialSharing,
-    private toastCtrl: ToastController,
-	private actionSheet: ActionSheet,
-	public modalCtrl: ModalController,){}
+	toast;
+	constructor(public jokesService: ApiProvider,
+		private clipboard: Clipboard,
+		private socialSharing: SocialSharing,
+		private toastCtrl: ToastController,
+		public modalCtrl: ModalController,
+		private alertCtrl: AlertController) { }
 
 	ionViewDidLoad() {
 		this.getInitial();
 		console.log('ionViewDidLoad TimelinePage');
 	}
 
-	openNewJokeModal(){
+	openNewJokeModal() {
 		let helpModal = this.modalCtrl.create(NewjokesPage);
-         helpModal.present();
+		helpModal.present();
 	}
 
-	openAboutModal(){
+	openAboutModal() {
 		let helpModal = this.modalCtrl.create(AboutPage);
-         helpModal.present();
+		helpModal.present();
 	}
 
 	// First load of the application
@@ -49,98 +46,105 @@ constructor(public navCtrl: NavController,
 	}
 
 	//To fill above list
-	getNewer(refresher) {
+	getNewer(refresher): Promise<any> {
 		let self = this;
-		self.jokesService.getJokes('getNewer');
-		setTimeout(() => {
-			refresher.complete();
-		}, 2000);
+		return new Promise((resolve) => {
+			self.jokesService.getJokes('getNewer');
+			setTimeout(() => {
+				refresher.complete();
+				resolve();
+			}, 2000);
+		});
+
 	}
 
 	// To Fill below list
-	getOlder(): Promise<any> {
+	getOlder(infiniteScroll) {
+		console.log('Begin async operation');
 		let self = this;
-		return new Promise((resolve) => {
-			setTimeout(() => {
-				self.jokesService.getJokes('getOlder');
-				resolve();
-			}, 100);
-		})
+		setTimeout(() => {
+			self.jokesService.getJokes('getOlder');
+			console.log('Async operation has ended');
+			infiniteScroll.complete();
+		}, 500);
 	}
 
-	async showAction(joke){
+	async showAction(joke) {
 		try {
-			let buttonLabels = ['مشاركة', 'نسخ','نسخ مع ضحكة'];
-			const options: ActionSheetOptions = {
-			title: 'آمر وتدلل؟',
-			subtitle: 'إختر وش تبي تسوي طال عمرك',
-			buttonLabels: buttonLabels,
-			addCancelButtonWithLabel: 'إلغاء',
-			androidTheme: this.actionSheet.ANDROID_THEMES.THEME_HOLO_DARK,
-			};
-
-			let selectedIndex = await this.actionSheet.show(options);
-
-			switch(selectedIndex){
-				case 1:
-					this.shareItem(joke);
-					break;
-				case 2:
-					this.copyText(joke);
-					break;
-				case 3:
-					let num_chars = this.randomIntFromInterval(10,20);
-					let extra_laugh = " ";
-					for(let i = 0; i<- num_chars; i++)
+			let alert = this.alertCtrl.create({
+				title: 'آمر وتدلل',
+				buttons: [
 					{
-						extra_laugh += "ه";
+						text: 'نسخ',
+						handler: () => {
+							this.copyText(joke);
+						}
+					},
+					{
+						text: 'نسخ مع ضحكة',
+						handler: () => {
+							let num_chars = this.randomIntFromInterval(10, 20);
+							let extra_laugh = " ";
+							for (let i = 0; i < - num_chars; i++) {
+								extra_laugh += "ه";
+							}
+							this.copyText(joke + extra_laugh);
+						}
+					},
+					{
+						text: 'مشاركة',
+						handler: () => {
+							this.shareItem(joke);
+						}
+					},
+					{
+						text: 'إلغاء',
+						role: 'cancel',
+						handler: data => {
+							console.log('Cancel clicked');
+						}
 					}
-					this.copyText(joke + extra_laugh);
-			}
+				]
+			});
+
+			alert.present();
 		}
 		catch (e) {
 			console.log(e);
 		}
 	}
 
-	copyText(joke){
+	private copyText(joke): void {
 		console.log(joke.content);
 		this.clipboard.copy(joke.content);
-		let toast = this.toastCtrl.create({
-			message: 'تم النسخ',
-			duration: 3000,
-			position: 'middle',
-			cssClass: 'toastMessage'
-		});
-		toast.present();
+		this.showToast("تم النسخ");
 	}
 
-	shareItem(item) {
+
+
+	private shareItem(item): void {
 		// this code is to use the social sharing plugin
 		// message, subject, file, url
-		let toast = this.toastCtrl.create({
-			message: 'ان شاء الله تعجبهم',
-			duration: 3000,
-			position: 'middle',
-			cssClass: 'toastMessage'
-		});
-		toast.present();
-
 		this.socialSharing.share(item.content).then(() => {
-			let toast = this.toastCtrl.create({
-			message: 'ان شاء الله تعجبهم',
-			duration: 3000,
-			position: 'middle'
-			});
-			toast.present();
+			this.showToast("تم النسخ");
 		})
-		.catch(() => {
-		});
+			.catch(() => {
+			});
 	}
 
 	// Used for random laugh addition in action sheet
-	randomIntFromInterval(min,max){
-    	return Math.floor(Math.random()*(max-min+1)+min);
+	private randomIntFromInterval(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+	}
+
+	private showToast(message: string): void {
+		this.toast = this.toastCtrl.create({
+			message: message,
+			duration: 3000,
+			position: 'middle',
+			cssClass: 'toastMessage'
+		});
+		this.toast.present();
 	}
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams, Headers } from '@angular/http';
-import { ToastController, LoadingController } from 'ionic-angular';
+import { NotificationsProvider } from '../notifications/notifications';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -11,18 +11,14 @@ export class ApiProvider {
 	newestDate: Date = null;
 	oldestDate: Date = null;
 	api_url = 'https://www.f6sny.com/api/getJokes';
-	api_temp_url = this.api_url;
 	api_count_url = 'https://www.f6sny.com/api/getTotalJokes';
 	api_tags_url = 'https://www.f6sny.com/api/getTags';
 	api_post_joke_url = 'https://www.f6sny.com/api/postJoke';
-	loader = this.loadingCtrl.create({
-	  content: "يرجى الإنتظار..",
-	});
 
-	constructor(public http: Http,
-		private toastCtrl: ToastController,
-		public loadingCtrl: LoadingController,
-	) {}
+
+	constructor(public http: Http, public nofity: NotificationsProvider) {
+		this.getTotalJokesCount();
+	}
 
 	getTags() {
 		let self = this;
@@ -49,13 +45,14 @@ export class ApiProvider {
 		if (params) {
 			if (params == 'getNewer') {
 				getParams.set('after', self.newestDate.toString());
+				self.nofity.showLoader("");
 			}
 			if (params == 'getOlder') {
 				getParams.set('before', self.oldestDate.toString());
 			}
 		}
 
-		self.http.get(self.api_temp_url, { search: getParams }).map(res => res.json()).subscribe(
+		this.http.get(self.api_url, { search: getParams }).map(res => res.json()).subscribe(
 			(data) => {
 				data.forEach(function(child) {
 					child.borderColor = child.tags[0].fore_color;
@@ -72,33 +69,22 @@ export class ApiProvider {
 				self.newestDate = self.jokes[0].date_modified;
 				//set last date
 				self.oldestDate = self.jokes[self.jokes.length - 1].date_modified;
+
 			},
 			(err) => {
-				let toast = this.toastCtrl.create({
-					message: "فيه شي ماضبط, جرب مرة ثانية",
-					duration: 3000,
-					position: 'middle',
-					cssClass: 'toastMessage'
-				});
-				toast.present();
+				if (params == 'getNewer') {
+						self.nofity.showToast("فيه شي ماضبط, جرب مرة ثانية");
+				}
 				console.log(err);
 			},
 			() => {
-				console.log("completed");
+
+				if (params == 'getNewer') {
+						self.nofity.hideLoader();
+				}
 			}
 		);
-		self.getTotalJokesCount();
 	}
-
-	private showLoader(): void {
-	    this.loader.present();
-		console.log('Show loader');
-    }
-
-	private hideLoader(): void {
-		this.loader.dismiss();
-        console.log('Hide loader');
-    }
 
 	async postJoke(joke){
 		let self = this;
@@ -106,13 +92,13 @@ export class ApiProvider {
 	    headers.append('Content-Type', 'application/json');
 		console.log(joke);
 		//return;
-		this.showLoader();
+		self.nofity.showLoader("يرجى الإنتظار..");
 	    this.http.post(self.api_post_joke_url, JSON.stringify(joke), {headers: headers})
        .subscribe(
 			(res) => console.log(res),
 			(err) => console.warn(err),
 			() => {
-				this.hideLoader();
+				self.nofity.hideLoader();
 			}
    		);
 	  }

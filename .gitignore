@@ -32,3 +32,6 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+# App Specific files that should not be shared
+AppInfo.md

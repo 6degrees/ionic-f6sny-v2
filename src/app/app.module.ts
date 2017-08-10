@@ -7,10 +7,9 @@ import { AboutPage } from '../pages/about/about';
 
 import { ApiProvider } from '../providers/api/api';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import {Deploy, CloudSettings, CloudModule} from '@ionic/cloud-angular';
+import { CloudSettings, CloudModule} from '@ionic/cloud-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
 import { Firebase } from '@ionic-native/firebase';
 import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -18,6 +17,7 @@ import { ActionSheet } from '@ionic-native/action-sheet';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { NotificationsProvider } from '../providers/notifications/notifications';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -52,13 +52,13 @@ const cloudSettings: CloudSettings = {
   ],
   providers: [
     StatusBar,
-    SplashScreen,
     Firebase,
     Clipboard,
     SocialSharing,
 	ActionSheet,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiProvider
+    ApiProvider,
+    NotificationsProvider
   ]
 })
 export class AppModule {}

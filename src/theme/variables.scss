@@ -5,13 +5,15 @@ $app-direction: "rtl";
 // Shared Variables
 // --------------------------------------------------
 $toast-max-width:  60%;
-$background-color: #fffee8;
+$background-color: #f0f0f0;
 $toolbar-background: #E9AD0E;
 $toolbar-text-color: #ffffff;
 $headings-line-height: 1.8;
 $line-height-base: 1.8 !default;
 $link-color: #333;
 $font-size-base: 1.8rem;
+
+
 
 // Named Color Variables
 // --------------------------------------------------
@@ -22,7 +24,7 @@ $colors: (
 	light:      #f4f4f4,
 	dark:       #333,
 	f6snyPrimary :(
-		base: #ffc106,
+		base: #ffc900,
 		contrast: #ffffff),
 	f6snySecondary:  #ffd938,
 	success: (

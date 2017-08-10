@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1079343451891",
+    "firebase_url": "https://f6sny-f130d.firebaseio.com",
+    "project_id": "f6sny-f130d",
+    "storage_bucket": "f6sny-f130d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079343451891:android:4f492c6f84653e9c",
+        "android_client_info": {
+          "package_name": "com.f6sny.f6sny"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079343451891-qen7bn8o0q16nhc9e4ru5fe3d3pi9mrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVxL5KoolI7HPMD5Ef1FTQe2pT3wYtbNo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

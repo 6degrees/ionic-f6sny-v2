@@ -14,18 +14,20 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content no-padding>
+<ion-content no-padding no-bounce>
 	<ion-grid>
 		<ion-row>
-			<ion-col><ion-textarea no-margin placeholder="طق هنا واكتب نكتتك" [(ngModel)]="Joke" rows="6" class="postTextArea"></ion-textarea></ion-col>
+			<ion-col>
+				<ion-textarea no-margin placeholder="طق هنا واكتب نكتتك" [(ngModel)]="Joke" rows="10" class="postTextArea"></ion-textarea>
+			</ion-col>
 		</ion-row>
 
 	</ion-grid>
 </ion-content>
 <ion-footer>
-	<ion-grid no-padding no-margin>
+	<ion-grid>
 		<ion-row>
-			<ion-col>
+			<ion-col padding>
 				<h3>تصنيفات</h3><small>إختر واحد على الأقل</small>
 			</ion-col>
 
