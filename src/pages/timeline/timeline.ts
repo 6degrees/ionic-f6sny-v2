@@ -69,6 +69,48 @@ export class TimelinePage {
 		}, 500);
 	}
 
+	reportJoke(joke,report_reason){
+		let self = this;
+		setTimeout(() => {
+			self.jokesService.reportJoke(joke.id,report_reason);
+			console.log('Async operation has ended');
+		}, 500);
+	}
+	async showReportActions(joke){
+		try{
+			let reportAlert = this.alertCtrl.create({
+				title: 'وش المشكلة؟',
+				buttons: [
+					{
+						text: 'سب وشتم',
+						handler: () => {
+							this.reportJoke(joke,1);
+						}
+					},
+					{
+						text: 'كلام وصخ جداً',
+						handler: () => {
+							this.reportJoke(joke,2);
+						}
+					},
+
+					{
+						text: 'إلغاء',
+						role: 'cancel',
+						handler: data => {
+							console.log('Cancel clicked');
+						}
+					}
+				]
+			});
+
+			reportAlert.present();
+		}
+		catch (e) {
+			console.log(e);
+		}
+
+	}
 	async showAction(joke) {
 		try {
 			let alert = this.alertCtrl.create({
@@ -95,6 +137,13 @@ export class TimelinePage {
 						text: 'مشاركة',
 						handler: () => {
 							this.shareItem(joke);
+						}
+					},
+					{
+						text: 'تبليغ',
+						cssClass: 'text-danger',
+						handler: () => {
+							this.showReportActions(joke);
 						}
 					},
 					{

@@ -14,9 +14,10 @@ export class ApiProvider {
 	api_count_url = 'https://www.f6sny.com/api/getTotalJokes';
 	api_tags_url = 'https://www.f6sny.com/api/getTags';
 	api_post_joke_url = 'https://www.f6sny.com/api/postJoke';
+	api_report_joke_url = 'https://www.f6sny.com/api/reportJoke';
 
 
-	constructor(public http: Http, public nofity: NotificationsProvider) {
+	constructor(public http: Http, public notify: NotificationsProvider) {
 		this.getTotalJokesCount();
 	}
 
@@ -25,7 +26,6 @@ export class ApiProvider {
 		this.http.get(this.api_tags_url).map(res => res.json()).subscribe(data => {
 			self.tags = data;
 		});
-
     }
 
 	getTotalJokesCount() {
@@ -45,7 +45,7 @@ export class ApiProvider {
 		if (params) {
 			if (params == 'getNewer') {
 				getParams.set('after', self.newestDate.toString());
-				self.nofity.showLoader("");
+				self.notify.showLoader("");
 			}
 			if (params == 'getOlder') {
 				getParams.set('before', self.oldestDate.toString());
@@ -73,17 +73,43 @@ export class ApiProvider {
 			},
 			(err) => {
 				if (params == 'getNewer') {
-						self.nofity.showToast("فيه شي ماضبط, جرب مرة ثانية");
+						self.notify.showToast("فيه شي ماضبط, جرب مرة ثانية");
 				}
 				console.log(err);
 			},
 			() => {
 
 				if (params == 'getNewer') {
-						self.nofity.hideLoader();
+						self.notify.hideLoader();
 				}
 			}
 		);
+	}
+
+	async reportJoke(joke_id,report_reason_id){
+		let self = this;
+		let post: any = {
+			'joke_id': joke_id,
+			'report_reason_id': report_reason_id
+		}
+	    let headers = new Headers();
+	    headers.append('Content-Type', 'application/json');
+		console.log(post);
+		self.notify.showLoader("يرجى الإنتظار..");
+		this.http.post(self.api_report_joke_url, JSON.stringify(post), {headers: headers})
+	   .subscribe(
+		   (res) => {
+			   console.log(res)
+		   },
+		   (err) => {
+			   console.warn(err);
+			   self.notify.hideLoader();
+			   self.notify.showToast("فيه شي ماضبط, جرب مرة ثانية");
+		   },
+		   () => {
+			   self.notify.hideLoader();
+		   }
+	   );
 	}
 
 	async postJoke(joke){
@@ -92,13 +118,13 @@ export class ApiProvider {
 	    headers.append('Content-Type', 'application/json');
 		console.log(joke);
 		//return;
-		self.nofity.showLoader("يرجى الإنتظار..");
+		self.notify.showLoader("يرجى الإنتظار..");
 	    this.http.post(self.api_post_joke_url, JSON.stringify(joke), {headers: headers})
        .subscribe(
 			(res) => console.log(res),
 			(err) => console.warn(err),
 			() => {
-				self.nofity.hideLoader();
+				self.notify.hideLoader();
 			}
    		);
 	  }

@@ -23,16 +23,17 @@
 	</ion-refresher>
 
 	<!-- The Jokes List -->
-	<ion-list no-padding>
-		<ion-item no-margin no-lines class="joke_container" *ngFor="let joke of jokesService.jokes">
-			<div (click)="showAction(joke);" class="joke" [ngStyle]="{'border-color': joke.borderColor}">
-				<p style="white-space: pre-wrap; margin-top:0px;color:#333333;">{{joke.content}}</p>
-			</div>
-		</ion-item>
-	</ion-list>
+	<ion-card
+	*ngFor="let joke of jokesService.jokes"
+	[ngStyle]="{'border-color': joke.borderColor}"
+	style="background:white;border-right: 2px solid;">
+		<ion-card-content (click)="showAction(joke);">
+			<p style="white-space: pre-wrap; color:#333333;">{{joke.content}}</p>
+		</ion-card-content>
+	</ion-card>
 
 	<!-- Scroll to infinity -->
 	<ion-infinite-scroll (ionInfinite)="getOlder($event)">
 		<ion-infinite-scroll-content loadingText="عرض المزيد"></ion-infinite-scroll-content>
- 	</ion-infinite-scroll>
+	</ion-infinite-scroll>
 </ion-content>

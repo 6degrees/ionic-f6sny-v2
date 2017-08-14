@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, ToastController, ModalController, ViewController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { NewJokeHelpPage } from '../new-joke-help/new-joke-help';
+import { Keyboard } from 'ionic-native';
 
 @Component({
   selector: 'page-newjokes',
   templateUrl: 'newjokes.html',
 })
 export class NewjokesPage {
+	@ViewChild('jokeContent') myInput ;
 	Tags: any = [];
 	Joke: any = "";
 	formData: any;
@@ -32,7 +34,15 @@ export class NewjokesPage {
 
 	ionViewDidLoad(){
 		this.jokesService.getTags();
+		setTimeout(() => {
+			  Keyboard.show() // for android
+			  this.myInput.setFocus();
+			  console.log("focus set");
+			},150); //a least 150ms.
+
 	}
+
+	
 
 	openInformationModal(){
 		let helpModal = this.modalCtrl.create(NewJokeHelpPage);

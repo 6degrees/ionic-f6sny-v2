@@ -65,3 +65,4 @@
 * UI
 	* [Pintrest](https://www.pinterest.com/wepsdesign/ui-mobile-booking-travel/?lp=true)
 	* [Pintrest](https://www.pinterest.com/pin/271201208786791612/)
+	* [Ionic 3 Mobile Weather App Build](https://www.youtube.com/watch?v=qs2n_poLarc)
