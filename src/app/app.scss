@@ -1,0 +1,6 @@
+.ios, .md{
+
+	ion-header::after, [tabsPlacement="top"] > ion-tabbar::after, ion-footer::before, [tabsPlacement="bottom"] > ion-tabbar::before{
+		background-image: none;
+	}
+}

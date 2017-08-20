@@ -34,15 +34,16 @@ export class NewjokesPage {
 
 	ionViewDidLoad(){
 		this.jokesService.getTags();
+		let self = this;
 		setTimeout(() => {
-			  Keyboard.show() // for android
-			  this.myInput.setFocus();
+			  Keyboard.show(); // for android
 			  console.log("focus set");
+			  self.myInput.setFocus();
 			},150); //a least 150ms.
 
 	}
 
-	
+
 
 	openInformationModal(){
 		let helpModal = this.modalCtrl.create(NewJokeHelpPage);

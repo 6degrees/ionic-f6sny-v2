@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-navbar>
+	<ion-navbar color="f6snyPrimary">
 		<ion-buttons right>
 			<button ion-button icon-only (click)="openInformationModal()">
 				 <ion-icon name="help"></ion-icon>
@@ -14,11 +14,11 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content no-padding no-bounce>
+<ion-content no-padding>
 	<ion-grid>
 		<ion-row>
 			<ion-col>
-				<ion-textarea no-margin placeholder="طق هنا واكتب نكتتك" [(ngModel)]="Joke" rows="10" #jokeContent class="postTextArea"></ion-textarea>
+				<ion-textarea no-margin placeholder="طق هنا واكتب نكتتك" [(ngModel)]="Joke" rows="10" #jokeContent ></ion-textarea>
 			</ion-col>
 		</ion-row>
 
@@ -27,15 +27,25 @@
 <ion-footer>
 	<ion-grid>
 		<ion-row>
-			<ion-col padding>
-				<h3>تصنيفات</h3><small>إختر واحد على الأقل</small>
+			<ion-col>
+				<h3>تصنيفات</h3>
 			</ion-col>
-
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<ion-select text-nowrap [selectOptions]="selectOptions" okText="تمام" cancelText="إلغاء" [(ngModel)]="Tags" multiple="true">
-					<ion-option class="nowrap" *ngFor="let tag of jokesService.tags" [value]="tag.id">{{tag.title}}</ion-option>
+				<ion-select
+				no-padding
+				text-nowrap
+				[selectOptions]="selectOptions"
+				okText="تمام"
+				cancelText="إلغاء"
+				[(ngModel)]="Tags"
+				multiple="true"
+				full large>
+					<ion-option
+					class="nowrap"
+					*ngFor="let tag of jokesService.tags"
+					[value]="tag.id">{{tag.title}}</ion-option>
 				</ion-select>
 			</ion-col>
 		</ion-row>

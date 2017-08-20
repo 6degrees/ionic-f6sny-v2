@@ -18,6 +18,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NotificationsProvider } from '../providers/notifications/notifications';
+import { Device } from '@ionic-native/device';
+
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -58,7 +60,8 @@ const cloudSettings: CloudSettings = {
 	ActionSheet,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider,
-    NotificationsProvider
+    NotificationsProvider,
+	Device
   ]
 })
 export class AppModule {}

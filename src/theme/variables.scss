@@ -4,15 +4,11 @@ $app-direction: "rtl";
 
 // Shared Variables
 // --------------------------------------------------
-$toast-max-width:  60%;
-$background-color: #f0f0f0;
-$toolbar-background: #E9AD0E;
-$toolbar-text-color: #ffffff;
+
 $headings-line-height: 1.8;
 $line-height-base: 1.8 !default;
-$link-color: #333;
 $font-size-base: 1.8rem;
-
+$link-color: #333;
 
 
 // Named Color Variables
@@ -26,7 +22,7 @@ $colors: (
 	f6snyPrimary :(
 		base: #ffc900,
 		contrast: #ffffff),
-	f6snySecondary:  #ffd938,
+	f6snySecondary:  #ffe05c,
 	success: (
 		base: #52c800,
 		contrast: #ffffff),
@@ -35,18 +31,18 @@ $colors: (
 	tumblr: 	#35465c,
 	instagram: 	#3f729b
 );
+$background-color: color($colors, f6snySecondary);
+
+
 
 // App iOS Variables
 // --------------------------------------------------
-$text-input-ios-margin-top : 3px;
 
 // App Material Design Variables
 // --------------------------------------------------
-$text-input-md-margin-top : 3px;
 
 // App Windows Variables
 // --------------------------------------------------
-$text-input-wp-margin-top : 3px;
 
 // App Theme
 // --------------------------------------------------

@@ -6,6 +6,7 @@
 * (x) Add New Post Functionality
 * (x) Add About Page link in homepage
 * (x) Fix checkboxes of new joke (it was a malfunction of genymotion)
+* Add Reporting function
 * Add Favorites and hearts function
 * Add Multi-forward (multiple select of jokes to forward or share)
 * Grab device ID for anonymous user generation of tokens

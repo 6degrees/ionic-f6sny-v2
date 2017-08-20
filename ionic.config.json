@@ -1,5 +1,8 @@
 {
   "name": "F6sny",
   "app_id": "d8d7c300",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }

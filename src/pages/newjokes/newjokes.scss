@@ -1,11 +1,20 @@
-page-newjokes {
-	ion-textarea{
-		padding:6px;
-		border-radius: 5px;
+.ios, .md{
+	page-newjokes {
+		ion-textarea{
+			padding:6px;
+			margin:0;
+			border-radius: 5px;
+			background-color: rgba(255,255,255,0.5);
+			max-width: 100%;
+			width: 100%;
+		}
+		ion-footer{
+			h3{
+				margin:0;
+			}
+			ion-select{
+				
+			}
+		}
 	}
-	.postTextArea {
-		max-width: 100%;
-		width: 100%;
-	}
-
 }

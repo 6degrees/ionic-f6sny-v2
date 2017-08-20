@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-navbar>
+	<ion-navbar color="f6snyPrimary">
 		<ion-buttons right>
 			<button ion-button icon-only (click)="openAboutModal()">
 				<ion-icon name="help"></ion-icon>
@@ -15,6 +15,7 @@
 
 	</ion-navbar>
 </ion-header>
+
 <ion-content>
 	<!-- Pull to Refresh -->
 	<ion-refresher (ionRefresh)="getNewer($event)">
@@ -36,4 +37,5 @@
 	<ion-infinite-scroll (ionInfinite)="getOlder($event)">
 		<ion-infinite-scroll-content loadingText="عرض المزيد"></ion-infinite-scroll-content>
 	</ion-infinite-scroll>
+
 </ion-content>

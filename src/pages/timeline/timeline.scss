@@ -1,11 +1,15 @@
-page-timeline {
-	ion-card{
-		margin:6px !important;
-		ion-card-content{
-			padding:6px !important;
+.ios,
+.md {
+	page-timeline {
+		ion-card {
+			margin: 6px;
+			ion-card-content {
+				padding: 6px;
+			}
 		}
 	}
-}
-.text-danger{
-	color:red !important;
+
+	.text-danger {
+		color: red !important;
+	}
 }
